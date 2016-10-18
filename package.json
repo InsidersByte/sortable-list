@@ -6,12 +6,16 @@
   "scripts": {
     "clean": "rimraf dist",
     "build": "npm run clean && babel src --out-dir dist",
+    "build-pages": "npm run clean && NODE_ENV=production webpack --config ./webpack.production.config.js --progress --profile --colors",
     "lint": "eslint --ignore-path .gitignore .",
     "flow": "flow",
     "flow-stop": "flow stop",
     "flow-check": "flow check",
     "test": "npm run lint && npm run flow-check",
-    "prepublish": "npm run build && npm test"
+    "start": "webpack-dev-server",
+    "prepublish": "npm run build && npm test",
+    "prepublish-pages": "npm run build-pages && npm test",
+    "publish-pages": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
@@ -31,6 +35,7 @@
     "react-dnd-html5-backend": "2.1.2"
   },
   "devDependencies": {
+    "autoprefixer": "6.5.1",
     "babel-cli": "6.16.0",
     "babel-core": "6.17.0",
     "babel-eslint": "7.0.0",
@@ -40,15 +45,26 @@
     "babel-preset-es2016": "6.16.0",
     "babel-preset-react": "6.16.0",
     "babel-preset-stage-1": "6.16.0",
+    "css-loader": "0.25.0",
     "eslint": "3.8.1",
     "eslint-config-airbnb": "12.0.0",
     "eslint-plugin-flowtype": "2.20.0",
     "eslint-plugin-import": "2.0.1",
     "eslint-plugin-jsx-a11y": "2.2.3",
     "eslint-plugin-react": "6.4.1",
+    "extract-text-webpack-plugin": "1.0.1",
     "flow-bin": "0.33.0",
+    "gh-pages": "0.11.0",
+    "html-webpack-plugin": "2.22.0",
+    "postcss-loader": "1.0.0",
     "react": "15.3.2",
     "react-dom": "15.3.2",
-    "rimraf": "2.5.4"
+    "rimraf": "2.5.4",
+    "stats-webpack-plugin": "0.4.2",
+    "style-loader": "0.13.1",
+    "stylus": "0.54.5",
+    "stylus-loader": "2.3.1",
+    "webpack": "1.13.2",
+    "webpack-dev-server": "1.16.2"
   }
 }

@@ -15,6 +15,7 @@
         "max-len": [2, 160, 2],
         "no-continue": 1,
         "class-methods-use-this": 1,
+        "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
 
         "react/jsx-indent-props": [2, 4],
         "react/jsx-indent": [2, 4],
